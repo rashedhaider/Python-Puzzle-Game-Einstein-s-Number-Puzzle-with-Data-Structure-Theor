@@ -1,0 +1,38 @@
+def einsteins_number_puzzle():
+    print("🧩 Welcome to Einstein's Number Puzzle! 🧩")
+    print("🤔 Can you solve the puzzle? 🤔")
+    print("ℹ️ Rules: Enter a three-digit number where the first and last digits differ by at least two.")
+    print("⚠️ Note: The solution will always be 1098.")
+    
+    while True:
+        user_input = input("💡 Enter a three-digit number: ")
+        
+        # Check if the input is a valid three-digit number
+        if not user_input.isdigit() or len(user_input) != 3:
+            print("❌ Please enter a valid three-digit number.")
+            continue
+        
+        guess = int(user_input)
+        
+        # Extracting digits
+        third_digit = guess % 10
+        second_digit = (guess // 10) % 10
+        first_digit = guess // 100
+        
+        # Check if the digits satisfy the condition
+        if abs(first_digit - third_digit) < 2:
+            print("❌ The first and last digits must differ by at least two.")
+            continue
+        
+        # Reversing the number
+        reversed_guess = (third_digit * 100) + (second_digit * 10) + first_digit
+        
+        # Calculating the difference and printing the result
+        difference = abs(guess - reversed_guess)
+        print("🎉 Congratulations! You've solved the puzzle! 🎉")
+        print("✨ The difference between the original number and its reverse is:", difference)
+        print("🔍 The solution is:", 1098)
+        break
+
+# Start the game
+einsteins_number_puzzle()
